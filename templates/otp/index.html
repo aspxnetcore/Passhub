@@ -1,0 +1,553 @@
+{% include '../public/header.html' %}
+{% include '../public/nav.html' %}
+<div>
+    <div class="box_list">
+        <div class="container">
+            <div class="row" id="time">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="bt"><span><i class="fa fa-key" aria-hidden="true"></i> 动态时钟 - 倒计时</span></div>
+                        <div class="times" style="text-align: center;font-size: 40px;">
+                            <span>剩余:</span><span
+                                style="font-weight: bold;margin-left: 15px;margin-right: 10px;color: #e81313;" id="ms">60</span><span>秒</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="kl"><span>我的口令</span></div>
+                <div class="kls"></div>
+            </div>
+            <div class="row" id="lists">
+
+            </div>
+            <div>
+                <div class="kl"><span>共享口令</span></div>
+                <div class="kls"></div>
+            </div>
+            <div class="row" id="listss">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加 OTP</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="otp_name">OTP 名字</label>
+                    <input type="text" class="form-control" id="otp_name" placeholder="请输入 OTP 组名">
+                </div>
+                <div class="form-group">
+                    <label for="otp_desc">OTP 介绍</label>
+                    <textarea id="otp_desc" class="form-control" placeholder="请输入 OTP 介绍" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="add()">添加</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">OTP 详情</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="form-control" id="otp_id">
+                <div class="form-group">
+                    <label for="otp_names">OTP 名字</label>
+                    <input type="text" class="form-control" id="otp_names" placeholder="请输入 OTP 组名">
+                </div>
+                <div class="form-group">
+                    <label for="otp_descs">OTP 介绍</label>
+                    <textarea id="otp_descs" class="form-control" placeholder="请输入 OTP 介绍" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="access_id">access_id</label>
+                    <input type="text" class="form-control" id="access_id" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="access_key">access_key</label>
+                    <input type="text" class="form-control" id="access_key" disabled>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" style="float: left;" onclick="del()">删除</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="update()">修改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal11">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">OTP 详情</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="form-control" id="otp_ids">
+                <div class="form-group">
+                    <label for="otp_names">OTP 名字</label>
+                    <input type="text" class="form-control" id="otp_namess" placeholder="请输入 OTP 组名" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="otp_descs">OTP 介绍</label>
+                    <textarea id="otp_descss" class="form-control" placeholder="请输入 OTP 介绍" rows="3"
+                              disabled></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="access_id">access_id</label>
+                    <input type="text" class="form-control" id="access_ids" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="access_key">access_key</label>
+                    <input type="text" class="form-control" id="access_keys" disabled>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">共享用户列表</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox" id="checkAll"></th>
+                        <th>用户名</th>
+                        <th>用户邮箱</th>
+                        <th>身份</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblist">
+
+                    </tbody>
+                </table>
+                <div class="input-group" style="    margin-bottom: 10px;">
+                    <input type="text" id="username" class="form-control"
+                           placeholder="请输入用户名">
+                        <span class="input-group-btn">
+                        <button type="button"
+                                class="btn waves-effect waves-light btn-primary" onclick="addUser()">添加</button>
+                        </span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" style="float: left;" onclick="deluser();">删除</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal4">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">共享用户列表</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>用户邮箱</th>
+                        <th>身份</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblists">
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% include '../public/footer.html' %}
+<script>
+
+    list();
+    sharelist();
+
+    settime();
+
+    function settime() {
+        var myDate = new Date();
+
+        var ms = myDate.getSeconds();
+
+        var sum = 60 - ms;
+
+        $("#ms").html(sum);
+
+        if (sum == 60) {
+            list();
+            sharelist();
+        }
+
+        setTimeout(function () {
+            settime()
+        }, 1000)
+    }
+
+    function show() {
+        $('#myModal').modal('show')
+    }
+
+    function show1(id, ids, key, name, desc) {
+        $("#otp_id").val(id);
+        $("#otp_names").val(name);
+        $("#otp_descs").val(desc);
+        $("#access_id").val(ids);
+        $("#access_key").val(key);
+        $('#myModal1').modal('show')
+    }
+
+    function show2(id, ids, key, name, desc) {
+        $("#otp_ids").val(id);
+        $("#otp_namess").val(name);
+        $("#otp_descss").val(desc);
+        $("#access_ids").val(ids);
+        $("#access_keys").val(key);
+        $('#myModal11').modal('show')
+    }
+
+    function update() {
+        var otp_id = $("#otp_id").val();
+        var otp_names = $("#otp_names").val();
+        var otp_descs = $("#otp_descs").val();
+
+        $.ajax({
+            type: "post",
+            url: "/otp/update",
+            dataType: "json",
+            data: {
+                'id': otp_id,
+                'otp_name': otp_names,
+                'otp_desc': otp_descs
+            },
+            success: function (data) {
+                swal(
+                        {
+                            title: "success",
+                            text: "修改成功",
+                            type: "success",
+                        },
+                        function () {
+                            location.reload(true);
+                        }
+                );
+            }, error: function (e) {
+                swal("warning!", "修改失败", "warning")
+            }
+        });
+    }
+
+    function add() {
+        var otp_name = $("#otp_name").val();
+        var otp_desc = $("#otp_desc").val();
+
+        if (otp_name == "") {
+            swal("warning!", "otp 名字不能为空", "warning")
+            return false;
+        }
+
+        if (otp_desc == "") {
+            swal("warning!", "otp 介绍不能为空", "warning")
+            return false;
+        }
+
+        $.ajax({
+            type: "post",
+            url: "/otp/add",
+            dataType: "json",
+            data: {
+                'otp_name': otp_name,
+                'otp_desc': otp_desc
+            },
+            success: function (data) {
+                swal(
+                        {
+                            title: "success",
+                            text: "添加成功",
+                            type: "success",
+                        },
+                        function () {
+                            location.reload(true);
+                        }
+                );
+            }, error: function (e) {
+                swal("warning!", "添加失败", "warning")
+            }
+        });
+    }
+
+
+    function list() {
+        $.ajax({
+            type: "get",
+            url: "/otp/list",
+            dataType: "json",
+            success: function (data) {
+                var d = data.result;
+                var _h = '';
+                for (var i = 0; i < d.length; i++) {
+                    _h += '<div class="col-md-3">';
+                    _h += '    <div class="box">';
+                    _h += '        <div class="bt"><span><i class="fa fa-key" aria-hidden="true"></i> ' + d[i].group_name + '</span><span';
+                    _h += '                class="set"><i style="cursor: pointer;" class="fa fa-cog" onclick="show1(&quot;' + d[i].id + '&quot;,&quot;' + d[i].access_id + '&quot;,&quot;' + d[i].access_key + '&quot;,&quot;' + d[i].group_name + '&quot;,&quot;' + d[i].group_desc + '&quot;)"></i></span></div>';
+                    _h += '        <div class="sz1">';
+                    _h += '            <span>' + d[i].key + '</span>';
+                    _h += '        </div>';
+                    _h += '        <div class="sz3"><i class="fa fa-users" aria-hidden="true" onclick="userlist(' + d[i].id + ')"></i></div>';
+                    _h += '    </div>';
+                    _h += '</div>';
+                }
+
+                _h += '<div class="col-md-3">';
+                _h += '    <div class="box">';
+                _h += '        <div class="bt"><span><i class="fa fa-key" aria-hidden="true"></i> 添加新OTP口令</span></div>';
+                _h += '        <div class="sz2" onclick="show()">';
+                _h += '            <span>+</span>';
+                _h += '        </div>';
+                _h += '    </div>';
+                _h += '</div>';
+
+                $("#lists").html(_h);
+            }, error: function (e) {
+                swal("warning!", "加载失败", "warning")
+            }
+        });
+    }
+
+    function sharelist() {
+        $.ajax({
+            type: "get",
+            url: "/otp/lists",
+            dataType: "json",
+            success: function (data) {
+                var d = data.result;
+                var _h = '';
+                for (var i = 0; i < d.length; i++) {
+                    _h += '<div class="col-md-3">';
+                    _h += '    <div class="box">';
+                    _h += '        <div class="bt"><span><i class="fa fa-key" aria-hidden="true"></i> ' + d[i].group_name + '</span><span';
+                    _h += '                class="set"><i style="cursor: pointer;" class="fa fa-cog" onclick="show2(&quot;' + d[i].id + '&quot;,&quot;' + d[i].access_id + '&quot;,&quot;' + d[i].access_key + '&quot;,&quot;' + d[i].group_name + '&quot;,&quot;' + d[i].group_desc + '&quot;)"></i></span></div>';
+                    _h += '        <div class="sz1">';
+                    _h += '            <span>' + d[i].key + '</span>';
+                    _h += '        </div>';
+                    _h += '        <div class="sz3"><i class="fa fa-users" aria-hidden="true" onclick="userlists(' + d[i].id + ')"></i></div>';
+                    _h += '    </div>';
+                    _h += '</div>';
+                }
+
+                $("#listss").html(_h);
+            }, error: function (e) {
+                swal("warning!", "加载失败", "warning")
+            }
+        });
+    }
+
+    $("#checkAll").click(function () {
+        $('input[name^="check_"]').each(function () {
+            this.checked = !this.checked;
+        });
+    });
+
+    var otp_id = 0;
+
+    function userlist(id) {
+        otp_id = id;
+        $.ajax({
+            type: "get",
+            url: "/otp/userlists",
+            dataType: "json",
+            data: {
+                'id': id
+            },
+            success: function (data) {
+                var d = data.result;
+                var _h = '';
+                for (var i = 0; i < d.length; i++) {
+                    _h += '<tr>';
+                    _h += '    <th><input type="checkbox" name="check_' + d[i].id + '" value="' + d[i].id + '"></th>';
+                    _h += '    <td>' + d[i].user_name + '</td>';
+                    _h += '    <td>' + d[i].user_mail + '</td>';
+                    _h += '    <td><span class="label label-info">共享用户</span></td>';
+                    _h += '</tr>';
+                }
+                $("#tblist").html(_h);
+            }, error: function (e) {
+                swal("warning!", "加载失败", "warning")
+            }
+        });
+        $('#myModal2').modal('show');
+    }
+
+    function userlists(id) {
+        otp_id = id;
+        $.ajax({
+            type: "get",
+            url: "/otp/userlists",
+            dataType: "json",
+            data: {
+                'id': id
+            },
+            success: function (data) {
+                var d = data.result;
+                var _h = '';
+                for (var i = 0; i < d.length; i++) {
+                    _h += '<tr>';
+                    _h += '    <td>' + d[i].user_name + '</td>';
+                    _h += '    <td>' + d[i].user_mail + '</td>';
+                    _h += '    <td><span class="label label-info">共享用户</span></td>';
+                    _h += '</tr>';
+                }
+                $("#tblists").html(_h);
+            }, error: function (e) {
+                swal("warning!", "加载失败", "warning")
+            }
+        });
+        $('#myModal4').modal('show');
+    }
+
+
+    function deluser() {
+        swal({
+            title: "你将会删除这些共享用户",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            confirmButtonText: "删除",
+            confirmButtonColor: "#ec6c62"
+        }, function () {
+            var val = "";
+            $('input[name^="check_"]').each(function () {
+                if (this.checked) {
+                    val += $(this).val() + ',';
+                }
+            });
+            val = val.substring(0, val.length - 1);
+
+            $.ajax({
+                type: "POST",
+                url: "/otp/userdel",
+                dataType: "json",
+                data: {
+                    'vals': val,
+                    'otp_id': otp_id
+                },
+                success: function (data) {
+                    swal("success", "删除成功!", "success");
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 2000);
+                }, error: function (e) {
+                    console.log('error');
+                    swal("warning", "删除失败!", "warning");
+                }
+            });
+        });
+    }
+
+    function addUser() {
+        var username = $("#username").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/otp/useradd",
+            dataType: "json",
+            data: {
+                'username': username,
+                'otp_id': otp_id
+            },
+            success: function (data) {
+                var d = data.result;
+                if (d == 'fail') {
+                    swal("warning", "用户不存在", "warning");
+                } else if (d == 'success') {
+                    swal("success", "添加成功!", "success");
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 2000);
+                }
+            }, error: function (e) {
+                console.log('error');
+                swal("warning", "加载失败!", "warning");
+            }
+        });
+    }
+
+    function del() {
+        var otp_id = $("#otp_id").val();
+        swal({
+            title: "你将会删除当前 OTP 口令",
+            type: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            confirmButtonText: "删除",
+            confirmButtonColor: "#ec6c62"
+        }, function () {
+            $.ajax({
+                type: "post",
+                url: "/otp/del",
+                dataType: "json",
+                data: {
+                    'id': otp_id
+                },
+                success: function (data) {
+                    swal(
+                            {
+                                title: "success",
+                                text: "删除成功",
+                                type: "success",
+                            },
+                            function () {
+                                location.reload(true);
+                            }
+                    );
+                }, error: function (e) {
+                    swal("warning!", "添加失败", "warning")
+                }
+            });
+        });
+    }
+</script>

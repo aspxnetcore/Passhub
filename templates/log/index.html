@@ -1,0 +1,59 @@
+{% include '../public/header.html' %}
+{% include '../public/nav.html' %}
+<div>
+    <div class="box_list">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box_ct">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>标题</th>
+                                <th>内容</th>
+                                <th>类型</th>
+                                <th>时间</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tablist">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include '../public/footer.html' %}
+<script>
+    $.ajax({
+        type: "get",
+        url: "/log/list",
+        dataType: "json",
+        success: function (data) {
+            var d = data.result;
+            var _h = '';
+            for (var i = 0; i < d.length; i++) {
+                _h += '<tr>';
+                _h += '    <td>' + d[i].id + '</td>';
+                _h += '    <td>' + d[i].log_title + '</td>';
+                _h += '    <td>' + d[i].log_desc + '</td>';
+
+                if (d[i].type == "1") {
+                    _h += '    <td><span class="label label-success">成功</span></td>';
+                }
+
+                if (d[i].type == "2") {
+                    _h += '    <td><span class="label label-warning">失败</span></td>';
+                }
+
+                _h += '    <td>' + d[i].create_time + '</td>';
+                _h += '</tr>';
+            }
+            $("#tablist").html(_h);
+        }, error: function (e) {
+            swal("warning!", "加载失败", "warning")
+        }
+    });
+</script>

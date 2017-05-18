@@ -1,0 +1,134 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background: #f0f0f0;
+    letter-spacing: 1px;
+}
+
+body {
+    height: 100%;
+}
+
+.clear {
+    clear: both;
+}
+
+a {
+    color: #444;
+}
+
+.navbar-default {
+    background-color: #FFFFFF;
+}
+
+.nav {
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+    background-color: #fff;
+    border-bottom: 2px solid #c72a2a;
+    color: #444;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #777;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.box {
+    width: 100%;
+    height: 105px;
+    border-radius: 5px;
+    background: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 17px rgba(181, 181, 181, 0.87);
+    padding: 10px;
+}
+
+.box .bt {
+    font-size: 12px;
+    font-weight: bold;
+    color: #848484;
+    letter-spacing: 3px;
+}
+
+.box .sz {
+    font-size: 45px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.box .sz1 {
+    font-size: 49px;
+    text-align: center;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+
+.box .sz2 {
+    font-size: 100px;
+    text-align: center;
+    color: #d4d4d4;
+    margin-top: -34px;
+    cursor: pointer;
+}
+
+.chart_list {
+    margin-top: 20px;
+}
+
+.box_ct {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: #fff;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 17px rgba(181, 181, 181, 0.87);
+    padding: 10px;
+}
+
+.set {
+    float: right;
+}
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #8a8a8a;
+    margin-top: 20px;
+}
+
+.logos {
+    width: 35px;
+    float: left;
+    margin-top: -7px;
+    margin-right: 5px;
+}
+
+.kl {
+    font-size: 12px;
+    color: #909090;
+    margin-bottom: 5px;
+}
+
+.kls {
+    border-top: 1px solid #dedede;
+    margin-bottom: 15px;
+}
+
+.sz3 {
+    text-align: right;
+    margin-top: -10px;
+    font-size: 12px;
+    color: #848484;
+    cursor: pointer;
+}
